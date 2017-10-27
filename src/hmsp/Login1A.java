@@ -75,7 +75,7 @@ public class Login1A extends javax.swing.JFrame {
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 15));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/if_administrator_43669.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adminstrator.png"))); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
