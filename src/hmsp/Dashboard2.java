@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package hmsp;
-
+import java.util.*;
 import java.awt.CardLayout;
 import java.awt.Color;
-import javax.swing.JPanel;
-
+import java.awt.Dimension;
+import javax.swing.*;
+import javax.swing.table.*;
+import java.sql.*;
+import javax.sql.*;
 /**
  *
  * @author Satheesh
@@ -20,6 +23,7 @@ public class Dashboard2 extends javax.swing.JFrame {
      */
     public Dashboard2() {
         initComponents();
+        setTable();
     }
 
     /**
@@ -62,9 +66,8 @@ public class Dashboard2 extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jTextField7 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel41 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setBorder(null);
@@ -234,10 +237,9 @@ public class Dashboard2 extends javax.swing.JFrame {
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 442, Short.MAX_VALUE)
                                 .addComponent(jLabel42))))
-                    .addGroup(infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel10)
-                        .addComponent(jLabel9)
-                        .addComponent(jLabel8)))
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8))
                 .addGap(33, 33, 33))
         );
         infoLayout.setVerticalGroup(
@@ -284,20 +286,6 @@ public class Dashboard2 extends javax.swing.JFrame {
 
         jButton1.setText("Search");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.setRowHeight(90);
-        jScrollPane1.setViewportView(jTable1);
-
         jLabel41.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel41.setText("X");
         jLabel41.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -306,24 +294,28 @@ public class Dashboard2 extends javax.swing.JFrame {
             }
         });
 
+        jPanel3.setMaximumSize(new java.awt.Dimension(0, 0));
+        jPanel3.setLayout(new java.awt.GridLayout());
+
         javax.swing.GroupLayout PatientLayout = new javax.swing.GroupLayout(Patient);
         Patient.setLayout(PatientLayout);
         PatientLayout.setHorizontalGroup(
             PatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PatientLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(PatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(jTextField7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel41)
+                .addGroup(PatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PatientLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PatientLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(PatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                            .addComponent(jTextField7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
+                        .addComponent(jLabel41)))
                 .addGap(33, 33, 33))
-            .addGroup(PatientLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
-                .addContainerGap())
         );
         PatientLayout.setVerticalGroup(
             PatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,13 +325,13 @@ public class Dashboard2 extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addGroup(PatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1)))
                     .addComponent(jLabel41))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
 
         parent.add(Patient, "medicine");
@@ -410,6 +402,59 @@ public class Dashboard2 extends javax.swing.JFrame {
         panel.setBackground(new Color(41,64,114));
         
     }
+    public void setTable() {
+    // The Connection is obtained
+    try{
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
+        Statement stmt =  conn.createStatement();
+
+        ResultSet rs = stmt.executeQuery("select * from accounts");
+
+        // It creates and displays the table 
+
+        JTable table = new JTable(buildTableModel(rs));
+        table.setBounds(0,0,100,100);
+        JLabel l=new JLabel();
+        //l.setText("Hello Hello Hello Hello");
+        //l.setBounds(20,10,100,10);
+        //l.setMinimumSize(new Dimension(100,100));
+        //l.setBackground(new Color(0,0,0));
+        JScrollPane sp=new JScrollPane(table);
+        sp.setPreferredSize(new Dimension(100,50));
+        //JOptionPane.showMessageDialog(null,sp);
+        jPanel3.add(sp);
+        // Closes the Connection
+    }
+    catch(Exception e){System.out.println(e);}
+
+}
+
+public DefaultTableModel buildTableModel(ResultSet rs)
+        throws SQLException {
+
+    ResultSetMetaData metaData = rs.getMetaData();
+
+    // names of columns
+    Vector<String> columnNames = new Vector<String>();
+    int columnCount = metaData.getColumnCount();
+    for (int column = 1; column <= columnCount; column++) {
+        columnNames.add(metaData.getColumnName(column));
+    }
+
+    // data of the table
+    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+    while (rs.next()) {
+        Vector<Object> vector = new Vector<Object>();
+        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+            vector.add(rs.getObject(columnIndex));
+        }
+        data.add(vector);
+    }
+
+    return new DefaultTableModel(data, columnNames);
+
+}
     /**
      * @param args the command line arguments
      */
@@ -496,18 +541,17 @@ public class Dashboard2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JPanel parent;
