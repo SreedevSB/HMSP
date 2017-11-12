@@ -1,5 +1,10 @@
 package hmsp;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -149,8 +154,20 @@ public class LoginD extends javax.swing.JFrame {
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
-        new Dashboard2().setVisible(true);
+      try{       
+        String user=jTextField2.getText();
+        String pwd= new String (jPasswordField1.getPassword());
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
+        Statement stmt =  conn.createStatement();
+
+        ResultSet rs = stmt.executeQuery("select EID from Doctor natural join employee where EID='"+user+"' AND phone ='"+pwd+"'");
+        while(rs.next()){
+           this.setVisible(false);
+           new Dashboard2(user).setVisible(true);
+        }
+        }
+        catch(Exception e){}
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked

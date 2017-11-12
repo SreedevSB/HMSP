@@ -17,15 +17,21 @@ import javax.sql.*;
  * @author Satheesh
  */
 public class Dashboard2 extends javax.swing.JFrame {
+    String user;
 
     /**
      * Creates new form Dashboard
      */
-    public Dashboard2() {
+    public Dashboard2(String user) {
+        this.user=user;
         initComponents();
-        setTable();
+        setTable(user);
         setTable2();
-        loadLabels();
+        loadLabels(user);
+    }
+
+    private Dashboard2() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -83,6 +89,8 @@ public class Dashboard2 extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
         Nurse = new javax.swing.JPanel();
         jSeparator7 = new javax.swing.JSeparator();
         jTextField8 = new javax.swing.JTextField();
@@ -305,7 +313,7 @@ public class Dashboard2 extends javax.swing.JFrame {
                         .addComponent(jLabel16)
                         .addGap(46, 46, 46)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(270, 346, Short.MAX_VALUE))
+                .addGap(270, 487, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoLayout.createSequentialGroup()
                 .addGap(91, 91, 91)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -415,9 +423,9 @@ public class Dashboard2 extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addComponent(jLabel24)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,6 +433,34 @@ public class Dashboard2 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel24)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel11.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel11MouseClicked(evt);
+            }
+        });
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setText("Assigned Patients");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel29)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel29)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout PatientLayout = new javax.swing.GroupLayout(Patient);
@@ -441,7 +477,7 @@ public class Dashboard2 extends javax.swing.JFrame {
                             .addGroup(PatientLayout.createSequentialGroup()
                                 .addGap(217, 217, 217)
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE))
                             .addGroup(PatientLayout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addGroup(PatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,21 +487,25 @@ public class Dashboard2 extends javax.swing.JFrame {
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(93, 93, 93)))
+                                .addGap(18, 18, 18)))
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
                         .addComponent(jLabel41)))
-                .addGap(141, 141, 141))
+                .addGap(258, 258, 258))
         );
         PatientLayout.setVerticalGroup(
             PatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PatientLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(PatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel41, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField7))
+                .addGroup(PatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(PatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel41, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 4, Short.MAX_VALUE)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -498,7 +538,7 @@ public class Dashboard2 extends javax.swing.JFrame {
         });
 
         jPanel7.setMaximumSize(new java.awt.Dimension(0, 0));
-        jPanel7.setLayout(new java.awt.GridLayout());
+        jPanel7.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 102, 102));
@@ -545,7 +585,7 @@ public class Dashboard2 extends javax.swing.JFrame {
                             .addGroup(NurseLayout.createSequentialGroup()
                                 .addGap(217, 217, 217)
                                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 400, Short.MAX_VALUE))
                             .addGroup(NurseLayout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addGroup(NurseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -594,7 +634,7 @@ public class Dashboard2 extends javax.swing.JFrame {
             .addComponent(parent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1027, 507));
+        setSize(new java.awt.Dimension(984, 507));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -605,6 +645,8 @@ public class Dashboard2 extends javax.swing.JFrame {
         setColor(jPanel8);
         resetColor(jPanel15);
         resetColor(jPanel14);
+        jLabel19.setText("");
+        jLabel27.setText("");
        
     }//GEN-LAST:event_jPanel8MouseClicked
 
@@ -615,6 +657,8 @@ public class Dashboard2 extends javax.swing.JFrame {
         setColor(jPanel14);
         resetColor(jPanel15);
         resetColor(jPanel8);
+        jLabel19.setText("");
+        jLabel27.setText("");
         
     }//GEN-LAST:event_jPanel14MouseClicked
 
@@ -624,7 +668,7 @@ public class Dashboard2 extends javax.swing.JFrame {
         resetColor(jPanel14);
         resetColor(jPanel8);
         this.setVisible(false);
-        new LoginHome().setVisible(true);
+        new LoginD().setVisible(true);
 
     }//GEN-LAST:event_jPanel9MouseClicked
 
@@ -648,8 +692,8 @@ public class Dashboard2 extends javax.swing.JFrame {
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
                 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
                 Statement stmt =  conn.createStatement();
-
-                ResultSet rs = stmt.executeQuery("select * from Patient WHERE name LIKE '%"+pname+"%'");
+                user=this.user;
+                ResultSet rs = stmt.executeQuery("select * from patient WHERE name LIKE '"+pname+"%'");
                 jLabel19.setText("");
                 JTable table = new JTable(buildTableModel(rs));
                 table.setBounds(0,0,100,100);
@@ -674,7 +718,7 @@ public class Dashboard2 extends javax.swing.JFrame {
         jPanel3.removeAll();
         jPanel3.revalidate();
         jPanel3.repaint();
-        setTable();
+        setTable11(this.user);
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jPanel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseClicked
@@ -685,6 +729,8 @@ public class Dashboard2 extends javax.swing.JFrame {
         setColor(jPanel15);
         resetColor(jPanel14);
         resetColor(jPanel8);
+        jLabel19.setText("");
+        jLabel27.setText("");
     }//GEN-LAST:event_jPanel15MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -698,7 +744,7 @@ public class Dashboard2 extends javax.swing.JFrame {
                 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
                 Statement stmt =  conn.createStatement();
 
-                ResultSet rs = stmt.executeQuery("select * from Nurse WHERE name LIKE '%"+nursename+"%'");
+                ResultSet rs = stmt.executeQuery("select * from Employee NATURAL JOIN Nurse WHERE name LIKE '"+nursename+"%'");
                 jLabel27.setText("");
                 JTable table = new JTable(buildTableModel(rs));
                 table.setBounds(0,0,100,100);
@@ -726,7 +772,20 @@ public class Dashboard2 extends javax.swing.JFrame {
 
     private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
         // TODO add your handling code here:
+        jPanel7.removeAll();
+        jPanel7.revalidate();
+        jPanel7.repaint();
+        setTable2();
+        
     }//GEN-LAST:event_jPanel10MouseClicked
+
+    private void jPanel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseClicked
+        // TODO add your handling code here:  
+        jPanel3.removeAll();
+        jPanel3.revalidate();
+        jPanel3.repaint();
+        setTable(this.user);
+    }//GEN-LAST:event_jPanel11MouseClicked
    void setColor(JPanel panel){
         panel.setBackground(new Color(102,102,255));
         
@@ -735,7 +794,7 @@ public class Dashboard2 extends javax.swing.JFrame {
         panel.setBackground(new Color(41,64,114));
         
     }
-    public void loadLabels(){
+    public void loadLabels(String user){
     try{
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
@@ -757,7 +816,34 @@ public class Dashboard2 extends javax.swing.JFrame {
     }
     catch(Exception e){System.out.println(e);}
     }
-    public void setTable() {
+    public void setTable(String user) {
+    // The Connection is obtained
+    try{
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
+        Statement stmt =  conn.createStatement();
+
+        ResultSet rs = stmt.executeQuery("select * from patient natural join treats where EID='"+user+"'");
+
+        // It creates and displays the table 
+
+        JTable table = new JTable(buildTableModel(rs));
+        table.setBounds(0,0,100,100);
+        JLabel l=new JLabel();
+        //l.setText("Hello Hello Hello Hello");
+        //l.setBounds(20,10,100,10);
+        //l.setMinimumSize(new Dimension(100,100));
+        //l.setBackground(new Color(0,0,0));
+        JScrollPane sp=new JScrollPane(table);
+        sp.setPreferredSize(new Dimension(100,50));
+        //JOptionPane.showMessageDialog(null,sp);
+        jPanel3.add(sp);
+        // Closes the Connection
+    }
+    catch(Exception e){System.out.println(e);}
+
+}
+       public void setTable11(String user) {
     // The Connection is obtained
     try{
         Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -783,7 +869,7 @@ public class Dashboard2 extends javax.swing.JFrame {
     }
     catch(Exception e){System.out.println(e);}
 
-}
+} 
     public void setTable2() {
     // The Connection is obtained
     try{
@@ -791,7 +877,7 @@ public class Dashboard2 extends javax.swing.JFrame {
         Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
         Statement stmt =  conn.createStatement();
 
-        ResultSet rs = stmt.executeQuery("select * from Nurse");
+        ResultSet rs = stmt.executeQuery("select * from Employee NATURAL JOIN Nurse");
 
         // It creates and displays the table 
 
@@ -896,6 +982,7 @@ public DefaultTableModel buildTableModel(ResultSet rs)
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Dashboard2().setVisible(true);
             }
@@ -929,6 +1016,7 @@ public DefaultTableModel buildTableModel(ResultSet rs)
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
@@ -942,6 +1030,7 @@ public DefaultTableModel buildTableModel(ResultSet rs)
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
